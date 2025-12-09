@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './ProgressHeader.css'
 
 function ProgressHeader({ technologies }) {
+  // Анимированный процент
+  const [animatedPercentage, setAnimatedPercentage] = useState(0)
+  
   // Рассчитываем статистику
   const total = technologies.length
   const completed = technologies.filter(tech => tech.status === 'completed').length
   const inProgress = technologies.filter(tech => tech.status === 'in-progress').length
   const notStarted = technologies.filter(tech => tech.status === 'not-started').length
   const percentage = total > 0 ? Math.round((completed / total) * 100) : 0
+
+  // Анимация прогресс-бара
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedPercentage(percentage)
+    }, 300)
+    
+    return () => clearTimeout(timer)
+  }, [percentage])
 
   return (
     <div className="progress-header">
@@ -39,7 +51,7 @@ function ProgressHeader({ technologies }) {
           <div className="progress-bar">
             <div 
               className="progress-fill"
-              style={{ width: `${percentage}%` }}
+              style={{ width: `${animatedPercentage}%` }}
             ></div>
           </div>
           <div className="progress-labels">
