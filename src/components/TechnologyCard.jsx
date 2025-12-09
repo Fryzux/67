@@ -1,33 +1,35 @@
 import React from 'react'
 import './TechnologyCard.css'
 
-function TechnologyCard({ title, description, status }) {
+function TechnologyCard({ id, title, description, status, onStatusChange }) {
+  // Функция для обработки клика - циклически меняем статус
+  const handleClick = () => {
+    if (onStatusChange) {
+      onStatusChange(id)
+    }
+  }
+
   // Определяем иконку и стиль в зависимости от статуса
   const getStatusInfo = () => {
     switch (status) {
       case 'completed':
         return {
           icon: '✅',
-          className: 'technology-card completed',
+          className: 'technology-card status-completed',
           statusText: 'Изучено'
         }
       case 'in-progress':
         return {
           icon: '⏳',
-          className: 'technology-card in-progress',
+          className: 'technology-card status-in-progress',
           statusText: 'В процессе'
         }
       case 'not-started':
-        return {
-          icon: '⭕',
-          className: 'technology-card not-started',
-          statusText: 'Не начато'
-        }
       default:
         return {
-          icon: '❓',
-          className: 'technology-card',
-          statusText: 'Неизвестно'
+          icon: '⭕',
+          className: 'technology-card status-not-started',
+          statusText: 'Не начато'
         }
     }
   }
@@ -35,7 +37,11 @@ function TechnologyCard({ title, description, status }) {
   const statusInfo = getStatusInfo()
 
   return (
-    <div className={statusInfo.className}>
+    <div 
+      className={statusInfo.className} 
+      onClick={handleClick}
+      title="Нажмите, чтобы изменить статус"
+    >
       <div className="card-header">
         <h3>{title}</h3>
         <span className="status-icon">{statusInfo.icon}</span>

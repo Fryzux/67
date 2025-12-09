@@ -4,27 +4,28 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     border-left: 5px solid #ddd;
+    cursor: pointer;
   }
   
   .technology-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   
-  .technology-card.completed {
-    border-left-color: #4CAF50;
+  .technology-card.status-completed {
+    border-left-color: #45b7d1;
     background: linear-gradient(135deg, #f8fff8 0%, #e8f5e9 100%);
   }
   
-  .technology-card.in-progress {
-    border-left-color: #FF9800;
+  .technology-card.status-in-progress {
+    border-left-color: #4ecdc4;
     background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%);
   }
   
-  .technology-card.not-started {
-    border-left-color: #9E9E9E;
+  .technology-card.status-not-started {
+    border-left-color: #ff6b6b;
     background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
   }
   
@@ -65,17 +66,17 @@
     font-weight: 500;
   }
   
-  .technology-card.completed .status-badge {
-    background-color: #4CAF50;
+  .technology-card.status-completed .status-badge {
+    background-color: #45b7d1;
     color: white;
   }
   
-  .technology-card.in-progress .status-badge {
-    background-color: #FF9800;
+  .technology-card.status-in-progress .status-badge {
+    background-color: #4ecdc4;
     color: white;
   }
   
-  .technology-card.not-started .status-badge {
-    background-color: #9E9E9E;
+  .technology-card.status-not-started .status-badge {
+    background-color: #ff6b6b;
     color: white;
   }

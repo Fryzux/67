@@ -30,3 +30,28 @@
     gap: 20px;
     margin-top: 30px;
   }
+
+.quick-actions, .filter-buttons {
+    margin-bottom: 20px;
+  }
+  
+  .technology-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  @media (max-width: 768px) {
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .actions-container, .filter-container {
+      flex-direction: column;
+    }
+    
+    .technology-list {
+      grid-template-columns: 1fr;
+    }
+  }
