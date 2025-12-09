@@ -1,0 +1,81 @@
+/* src/components/TechnologyCard.css */
+.technology-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #ddd;
+  }
+  
+  .technology-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .technology-card.completed {
+    border-left-color: #4CAF50;
+    background: linear-gradient(135deg, #f8fff8 0%, #e8f5e9 100%);
+  }
+  
+  .technology-card.in-progress {
+    border-left-color: #FF9800;
+    background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%);
+  }
+  
+  .technology-card.not-started {
+    border-left-color: #9E9E9E;
+    background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .card-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.3rem;
+    flex: 1;
+  }
+  
+  .status-icon {
+    font-size: 1.5rem;
+    margin-left: 10px;
+  }
+  
+  .card-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .technology-card.completed .status-badge {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .technology-card.in-progress .status-badge {
+    background-color: #FF9800;
+    color: white;
+  }
+  
+  .technology-card.not-started .status-badge {
+    background-color: #9E9E9E;
+    color: white;
+  }
