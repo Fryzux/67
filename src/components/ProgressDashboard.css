@@ -1,0 +1,129 @@
+/* src/components/ProgressDashboard.css */
+.progress-dashboard {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .progress-dashboard h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .dashboard-section {
+    margin-bottom: 30px;
+  }
+  
+  .dashboard-section h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 1.2rem;
+  }
+  
+  .category-progress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .category-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #45b7d1;
+  }
+  
+  .category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .category-name {
+    font-weight: 500;
+    color: #495057;
+  }
+  
+  .category-stats {
+    font-size: 0.9rem;
+    color: #6c757d;
+    background: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+  }
+  
+  .dashboard-summary {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .dashboard-summary h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+  }
+  
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .summary-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    transition: transform 0.2s;
+  }
+  
+  .summary-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .summary-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  
+  .summary-info {
+    flex: 1;
+  }
+  
+  .summary-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 2px;
+  }
+  
+  .summary-progress {
+    font-size: 0.8rem;
+    color: #6c757d;
+  }
+  
+  @media (max-width: 768px) {
+    .progress-dashboard {
+      padding: 20px;
+    }
+    
+    .category-progress-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .summary-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }

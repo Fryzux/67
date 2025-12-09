@@ -161,3 +161,115 @@
       gap: 5px;
     }
   }
+  
+.add-tech-btn {
+    background: linear-gradient(135deg, #45b7d1, #4ecdc4);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+  }
+  
+  .add-tech-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-tech-btn.secondary {
+    background: #6c757d;
+    margin-top: 15px;
+  }
+  
+  .technology-card-wrapper {
+    position: relative;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+  }
+  
+  .technology-card-wrapper:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .tech-category {
+    font-size: 0.8rem;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  .tech-category-frontend {
+    background: #45b7d1;
+  }
+  
+  .tech-category-backend {
+    background: #ff6b6b;
+  }
+  
+  .tech-category-database {
+    background: #96c93d;
+  }
+  
+  .tech-category-tools {
+    background: #ffa502;
+  }
+  
+  .tech-category-other {
+    background: #6c757d;
+  }
+  
+  .delete-tech-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #dc3545;
+    opacity: 0.7;
+    transition: all 0.2s;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .delete-tech-btn:hover {
+    opacity: 1;
+    background: #f8f9fa;
+  }
+  
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    color: #6c757d;
+  }
+  
+  .no-results p:first-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .technology-card-wrapper {
+      padding: 12px;
+    }
+  }

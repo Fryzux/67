@@ -3,5 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Technology-tracker/'
+  base: '/Technology-tracker/',
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  }
 })
