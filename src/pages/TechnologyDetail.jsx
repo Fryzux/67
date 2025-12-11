@@ -1,6 +1,6 @@
 // src/pages/TechnologyDetail.jsx
 import React from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import useTechnologies from '../hooks/useTechnologies'
 import TechnologyNotes from '../components/TechnologyNotes'
 
@@ -20,89 +20,72 @@ function TechnologyDetail() {
 
   if (!technology) {
     return (
-      <div className="page">
+      <div className="container card">
         <h1>Технология не найдена</h1>
-        <p>Технология с ID {id} не найдена.</p>
-        <Link to="/technologies" className="btn">
-          ← Вернуться к списку
-        </Link>
+        <Link to="/technologies" className="btn">← Назад</Link>
       </div>
     )
   }
 
-  const handleStatusChange = (newStatus) => {
-    updateStatus(techId, newStatus)
-  }
-
   const handleDelete = () => {
-    if (window.confirm('Удалить эту технологию?')) {
+    if (window.confirm('Удалить технологию?')) {
       deleteTechnology(techId)
       navigate('/technologies')
     }
   }
 
   return (
-    <div className="page technology-detail-page">
-      <div className="page-header">
-        <button
-          className="back-link"
-          onClick={() => navigate(-1)}
-        >
-          ← Назад
-        </button>
-        <h1>{technology.title}</h1>
-        <button className="delete-tech-btn" onClick={handleDelete}>
-          🗑️
-        </button>
-      </div>
-
-      <div className="technology-detail">
-        <div className="detail-section">
-          <h3>Описание</h3>
-          <p>{technology.description}</p>
-          <p className="tech-category">Категория: {technology.category}</p>
+    <div className="page container">
+      {/* Верхняя панель: заголовок + контролы */}
+      <div className="row" style={{justifyContent:'space-between', alignItems:'center', marginBottom:12}}>
+        <div style={{display:'flex', gap:12, alignItems:'center'}}>
+          <button className="btn small" onClick={() => navigate(-1)}>← Назад</button>
+          <h1 style={{margin:0}}>{technology.title}</h1>
         </div>
 
-        <div className="detail-section">
+        <div style={{display:'flex', gap:8, alignItems:'center'}}>
+          <div className="badge" style={{marginRight:8}}>{technology.status}</div>
+          <button className="btn small" onClick={handleDelete} title="Удалить технологию">🗑️</button>
+        </div>
+      </div>
+
+      <div className="card" style={{display:'grid', gridTemplateColumns: '1fr 320px', gap:16}}>
+        <div>
+          <h3>Описание</h3>
+          <p>{technology.description}</p>
+          <p className="muted">Категория: {technology.category}</p>
+        </div>
+
+        <aside className="card">
           <h3>Статус</h3>
-          <div className="status-buttons">
+          <div className="row" style={{gap:8, marginTop:8}}>
             <button
-              onClick={() => handleStatusChange('not-started')}
-              className={
-                technology.status === 'not-started'
-                  ? 'status-btn active'
-                  : 'status-btn'
-              }
+              className={technology.status === 'not-started' ? 'btn small' : 'btn small ghost'}
+              onClick={() => updateStatus(techId, 'not-started')}
             >
               Не начато
             </button>
+
             <button
-              onClick={() => handleStatusChange('in-progress')}
-              className={
-                technology.status === 'in-progress'
-                  ? 'status-btn active'
-                  : 'status-btn'
-              }
+              className={technology.status === 'in-progress' ? 'btn small' : 'btn small ghost'}
+              onClick={() => updateStatus(techId, 'in-progress')}
             >
               В процессе
             </button>
+
             <button
-              onClick={() => handleStatusChange('completed')}
-              className={
-                technology.status === 'completed'
-                  ? 'status-btn active'
-                  : 'status-btn'
-              }
+              className={technology.status === 'completed' ? 'btn small' : 'btn small ghost'}
+              onClick={() => updateStatus(techId, 'completed')}
             >
               Завершено
             </button>
           </div>
-        </div>
+        </aside>
 
-        <div className="detail-section">
+        <div className="card" style={{gridColumn:'1 / -1'}}>
           <h3>Заметки</h3>
           <TechnologyNotes
-            techId={technology.id}
+            techId={techId}
             notes={technology.notes}
             onNotesChange={updateNotes}
           />

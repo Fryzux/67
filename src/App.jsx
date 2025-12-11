@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
+import './styles.css'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import TechnologyList from './pages/TechnologyList'
@@ -11,17 +11,14 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Stats from './pages/Stats'
 import Settings from './pages/Settings'
 
-
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return localStorage.getItem('isLoggedIn') === 'true'
   })
-  
+
   const [username, setUsername] = useState(() => {
     return localStorage.getItem('username') || ''
   })
-  
 
   useEffect(() => {
     const loggedIn = localStorage.getItem('isLoggedIn') === 'true'
@@ -36,7 +33,6 @@ function App() {
     setIsLoggedIn(true)
     setUsername(user)
   }
-  
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn')
@@ -44,7 +40,6 @@ function App() {
     setIsLoggedIn(false)
     setUsername('')
   }
-  
 
   return (
     <div className="App">
@@ -54,28 +49,30 @@ function App() {
         onLogout={handleLogout}
       />
 
-      <Routes>
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/stats" element={<Stats />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/Technology-tracker/" element={<Home />} />
+      <main className="container layout" style={{paddingTop: 20}}>
+        <Routes>
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/stats" element={<Stats />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/Technology-tracker/" element={<Home />} />
 
-        <Route path="/technologies" element={<TechnologyList />} />
-        <Route path="/technology/:id" element={<TechnologyDetail />} />
+          <Route path="/technologies" element={<TechnologyList />} />
+          <Route path="/technology/:id" element={<TechnologyDetail />} />
 
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/login" element={<Login onLogin={handleLogin} />} />
 
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
     </div>
   )
 }
