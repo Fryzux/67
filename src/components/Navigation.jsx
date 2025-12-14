@@ -1,19 +1,81 @@
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+// src/components/Navigation.jsx
+import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-export default function Navigation() {
+function Navigation({ isLoggedIn, username, onLogout }) {
+  const location = useLocation()
+
+  const isActive = (path) =>
+    location.pathname === path ||
+    location.pathname === `/Technology-tracker${path === '/' ? '/' : path}`
+
   return (
-    <AppBar position="static" sx={{ background: 'linear-gradient(90deg,#0f1b33,#0a1020)' }}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Technology Tracker
-        </Typography>
-        <Button color="inherit">Главная</Button>
-        <Button color="inherit">Технологии</Button>
-        <Button color="inherit">Статистика</Button>
-      </Toolbar>
-    </AppBar>
-  );
+    <nav className="main-navigation">
+      <div className="nav-brand">
+        <Link to="/">
+          <h2>📚 Technology Tracker</h2>
+        </Link>
+      </div>
+
+      <ul className="nav-menu">
+        <li>
+        <Link to="/">Главная</Link>
+
+        </li>
+        <li>
+          <Link
+            to="/technologies"
+            className={isActive('/technologies') ? 'active' : ''}
+          >
+            Технологии
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/dashboard"
+            className={isActive('/dashboard') ? 'active' : ''}
+          >
+            Дашборд
+          </Link>
+        </li>
+        <li>
+        <Link
+          to="/stats"
+          className={isActive('/stats') ? 'active' : ''}
+        >
+          Статистика
+        </Link>
+      </li>
+      
+      <li>
+      <Link
+        to="/settings"
+        className={isActive('/settings') ? 'active' : ''}
+      >
+        Настройки
+      </Link>
+     </li>
+
+
+      </ul>
+
+      <div className="nav-user">
+        {isLoggedIn ? (
+          <>
+            <span>👤 {username}</span>
+            <button className="logout-btn" onClick={onLogout}>
+              Выйти
+            </button>
+          </>
+        ) : (
+          <Link to="/login" className={isActive('/login') ? 'active' : ''}>
+            Войти
+          </Link>
+        )}
+      </div>
+    </nav>
+  )
+  
 }
+
+export default Navigation

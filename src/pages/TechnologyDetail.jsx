@@ -1,6 +1,6 @@
 // src/pages/TechnologyDetail.jsx
 import React from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import useTechnologies from '../hooks/useTechnologies'
 import TechnologyNotes from '../components/TechnologyNotes'
 
@@ -20,72 +20,89 @@ function TechnologyDetail() {
 
   if (!technology) {
     return (
-      <div className="container card">
+      <div className="page">
         <h1>Технология не найдена</h1>
-        <Link to="/technologies" className="btn">← Назад</Link>
+        <p>Технология с ID {id} не найдена.</p>
+        <Link to="/technologies" className="btn">
+          ← Вернуться к списку
+        </Link>
       </div>
     )
   }
 
+  const handleStatusChange = (newStatus) => {
+    updateStatus(techId, newStatus)
+  }
+
   const handleDelete = () => {
-    if (window.confirm('Удалить технологию?')) {
+    if (window.confirm('Удалить эту технологию?')) {
       deleteTechnology(techId)
       navigate('/technologies')
     }
   }
 
   return (
-    <div className="page container">
-      {/* Верхняя панель: заголовок + контролы */}
-      <div className="row" style={{justifyContent:'space-between', alignItems:'center', marginBottom:12}}>
-        <div style={{display:'flex', gap:12, alignItems:'center'}}>
-          <button className="btn small" onClick={() => navigate(-1)}>← Назад</button>
-          <h1 style={{margin:0}}>{technology.title}</h1>
-        </div>
-
-        <div style={{display:'flex', gap:8, alignItems:'center'}}>
-          <div className="badge" style={{marginRight:8}}>{technology.status}</div>
-          <button className="btn small" onClick={handleDelete} title="Удалить технологию">🗑️</button>
-        </div>
+    <div className="page technology-detail-page">
+      <div className="page-header">
+        <button
+          className="back-link"
+          onClick={() => navigate(-1)}
+        >
+          ← Назад
+        </button>
+        <h1>{technology.title}</h1>
+        <button className="delete-tech-btn" onClick={handleDelete}>
+          🗑️
+        </button>
       </div>
 
-      <div className="card" style={{display:'grid', gridTemplateColumns: '1fr 320px', gap:16}}>
-        <div>
+      <div className="technology-detail">
+        <div className="detail-section">
           <h3>Описание</h3>
           <p>{technology.description}</p>
-          <p className="muted">Категория: {technology.category}</p>
+          <p className="tech-category">Категория: {technology.category}</p>
         </div>
 
-        <aside className="card">
+        <div className="detail-section">
           <h3>Статус</h3>
-          <div className="row" style={{gap:8, marginTop:8}}>
+          <div className="status-buttons">
             <button
-              className={technology.status === 'not-started' ? 'btn small' : 'btn small ghost'}
-              onClick={() => updateStatus(techId, 'not-started')}
+              onClick={() => handleStatusChange('not-started')}
+              className={
+                technology.status === 'not-started'
+                  ? 'status-btn active'
+                  : 'status-btn'
+              }
             >
               Не начато
             </button>
-
             <button
-              className={technology.status === 'in-progress' ? 'btn small' : 'btn small ghost'}
-              onClick={() => updateStatus(techId, 'in-progress')}
+              onClick={() => handleStatusChange('in-progress')}
+              className={
+                technology.status === 'in-progress'
+                  ? 'status-btn active'
+                  : 'status-btn'
+              }
             >
               В процессе
             </button>
-
             <button
-              className={technology.status === 'completed' ? 'btn small' : 'btn small ghost'}
-              onClick={() => updateStatus(techId, 'completed')}
+              onClick={() => handleStatusChange('completed')}
+              className={
+                technology.status === 'completed'
+                  ? 'status-btn active'
+                  : 'status-btn'
+              }
             >
               Завершено
             </button>
           </div>
-        </aside>
+        </div>
 
-        <div className="card" style={{gridColumn:'1 / -1'}}>
+        <div className="detail-section">
           <h3>Заметки</h3>
           <TechnologyNotes
-            techId={techId}
+            techId={technology.id}
             notes={technology.notes}
             onNotesChange={updateNotes}
           />

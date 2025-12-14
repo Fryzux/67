@@ -13,7 +13,6 @@ function TechnologyNotes({ techId, notes, onNotesChange }) {
 
   return (
     <div className="technology-notes">
-      {/* HEADER — раскрытие */}
       <div 
         className="notes-header"
         onClick={() => setIsExpanded(!isExpanded)}
@@ -21,37 +20,31 @@ function TechnologyNotes({ techId, notes, onNotesChange }) {
         <span className="notes-toggle">
           {isExpanded ? '▼' : '▶'} Заметки
         </span>
-
         <span className="notes-counter">
-          {notes.length > 0 ? `${notes.length} символов` : 'Нет'}
+          {notes.length > 0 ? `${notes.length} симв.` : 'Нет заметок'}
         </span>
       </div>
       
-      {/* CONTENT */}
       {isExpanded && (
         <div className="notes-content">
           <textarea
             value={localNotes}
             onChange={handleChange}
-            placeholder="Записывайте сюда важные мысли, идеи и прогресс..."
+            placeholder="Записывайте сюда важные моменты по изучению этой технологии..."
             rows="4"
             className="notes-textarea"
           />
-
           <div className="notes-hint">
             {notes.length > 0 ? (
               <span className="notes-saved">
-                💾 Изменения сохранены ({notes.length} символов)
+                ✅ Заметка сохранена ({notes.length} символов)
               </span>
             ) : (
               <span className="notes-empty">
                 ✏️ Добавьте заметку для этой технологии
               </span>
             )}
-
-            <small style={{display:'block', opacity:0.7, marginTop:4}}>
-              Сохраняется автоматически
-            </small>
+            <small>Заметки сохраняются автоматически</small>
           </div>
         </div>
       )}

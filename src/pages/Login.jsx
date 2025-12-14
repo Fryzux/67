@@ -1,3 +1,4 @@
+// src/pages/Login.jsx
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,6 +10,7 @@ function Login({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    // простая проверка как в методичке: фиксированный логин/пароль
     if (username === 'admin' && password === 'password') {
       localStorage.setItem('isLoggedIn', 'true')
       localStorage.setItem('username', username)
@@ -24,40 +26,34 @@ function Login({ onLogin }) {
   }
 
   return (
-    <div className="page container">
-      <div className="card" style={{maxWidth:520, margin:'24px auto'}}>
-        <h1>Вход</h1>
+    <div className="page login-page">
+      <h1>Вход</h1>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group" style={{marginBottom:12}}>
-            <label>Логин</label>
-            <input
-              className="input"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              autoComplete="username"
-            />
-          </div>
+      <form onSubmit={handleSubmit} className="login-form">
+        <div className="form-group">
+          <label>Логин</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
 
-          <div className="form-group" style={{marginBottom:12}}>
-            <label>Пароль</label>
-            <input
-              className="input"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              autoComplete="current-password"
-            />
-          </div>
+        <div className="form-group">
+          <label>Пароль</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
 
-          <div style={{display:'flex', justifyContent:'flex-end', gap:8}}>
-            <button type="submit" className="btn">Войти</button>
-          </div>
-        </form>
-      </div>
+        <button type="submit" className="add-tech-btn">
+          Войти
+        </button>
+      </form>
     </div>
   )
 }

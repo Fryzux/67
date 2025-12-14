@@ -1,17 +1,24 @@
+// src/pages/Home.jsx
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Home() {
   return (
     <div className="page">
-      <header className="hero card">
-        <h1>📚 Добро пожаловать!</h1>
-        <p>Трекер технологий — следи за тем, что изучаешь, добавляй заметки и смотри прогресс.</p>
+      <header className="app-header">
+        <h1>📚 Добро пожаловать на главную страницу!</h1>
+        <p>Это стартовая страница нашего приложения.</p>
 
-        <div className="row" style={{marginTop:12}}>
-          <Link to="/technologies" className="btn">Перейти к списку технологий</Link>
-          <Link to="/stats" className="btn ghost">Открыть статистику</Link>
-          <Link to="/settings" className="btn ghost">Открыть настройки</Link>
+        <div className="home-actions">
+          <Link to="/technologies" className="home-btn primary">
+            Перейти к списку технологий
+          </Link>
+          <Link to="/stats" className="home-btn">
+            Открыть статистику
+          </Link>
+          <Link to="/settings" className="home-btn">
+            Открыть настройки
+          </Link>
         </div>
       </header>
     </div>
