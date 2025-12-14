@@ -13,7 +13,7 @@ function Navigation({ isLoggedIn, username, onLogout }) {
     <nav className="main-navigation">
       <div className="nav-brand">
         <Link to="/">
-          <h2>📚 Technology Tracker</h2>
+          <h2>📚 Технологии Трекер</h2>
         </Link>
       </div>
 

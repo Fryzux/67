@@ -15,22 +15,18 @@ function TechnologyCard({ id, title, description, status, deadline, onStatusChan
           icon: '✅',
           className: 'technology-card status-completed',
           statusText: 'Изучено',
-          statusColor: '#45b7d1'
         }
       case 'in-progress':
         return {
           icon: '⏳',
           className: 'technology-card status-in-progress',
           statusText: 'В процессе',
-          statusColor: '#4ecdc4'
         }
-      case 'not-started':
       default:
         return {
           icon: '⭕',
           className: 'technology-card status-not-started',
           statusText: 'Не начато',
-          statusColor: '#ff6b6b'
         }
     }
   }
@@ -44,7 +40,7 @@ function TechnologyCard({ id, title, description, status, deadline, onStatusChan
       title="Нажмите, чтобы изменить статус"
     >
       <div className="card-header">
-        <div className="card-title-section">
+        <div>
           <h3>{title}</h3>
           <span className="card-id">#{id}</span>
         </div>
@@ -61,10 +57,7 @@ function TechnologyCard({ id, title, description, status, deadline, onStatusChan
         )}
 
         <div className="card-footer">
-          <span
-            className="status-badge"
-            style={{ backgroundColor: statusInfo.statusColor }}
-          >
+          <span className={`status-badge ${status}`}>
             {statusInfo.statusText}
           </span>
         </div>

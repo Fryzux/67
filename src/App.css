@@ -764,3 +764,327 @@
 .theme-toggle-pill--dark .theme-toggle-pill__thumb {
   background: #90caf9;
 }
+/* ===== ТЁМНО-СИНЯЯ ТЕМА ===== */
+
+.App.dark {
+  background-color: #0b1220;
+}
+
+.App.dark .technology-card-wrapper,
+.App.dark .technology-card-with-link {
+  background-color: #111a2e;
+  border-color: #1e2a4a;
+  color: #e8eefc;
+}
+
+.App.dark .main-navigation {
+  background-color: #111a2e;
+}
+
+.App.dark .nav-brand h2,
+.App.dark .nav-menu a,
+.App.dark .nav-user,
+.App.dark .nav-user a {
+  color: #e8eefc;
+}
+
+.App.dark .logout-btn {
+  background-color: #1e2a4a;
+  color: #e8eefc;
+}
+/* ================================
+   DARK BLUE THEME (GLOBAL)
+================================ */
+
+.App.dark {
+  background: radial-gradient(circle at top, #101a33, #070b14);
+  color: #e8eefc;
+}
+
+/* ===== Панели (поиск, фильтры, быстрые действия) ===== */
+.App.dark .panel,
+.App.dark .search-bar,
+.App.dark .filter-buttons,
+.App.dark .quick-actions,
+.App.dark .technology-search {
+  background: linear-gradient(180deg, #0f1a2f, #0b1220);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #e8eefc;
+}
+
+/* ===== Инпуты ===== */
+.App.dark input,
+.App.dark textarea,
+.App.dark select {
+  background-color: #111a2e;
+  border: 1px solid #1e2a4a;
+  color: #e8eefc;
+}
+
+.App.dark input::placeholder {
+  color: #9aa7c7;
+}
+
+/* ===== Карточки технологий ===== */
+.App.dark .technology-card-wrapper,
+.App.dark .technology-card-with-link,
+.App.dark .tech-card {
+  background: linear-gradient(180deg, #111a2e, #0b1220);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  color: #e8eefc;
+}
+
+/* ===== Заголовки карточек ===== */
+.App.dark .tech-title,
+.App.dark h1,
+.App.dark h2,
+.App.dark h3 {
+  color: #ffffff;
+}
+
+/* ===== Навигация ===== */
+.App.dark .main-navigation {
+  background: linear-gradient(180deg, #111a2e, #0b1220);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.App.dark .nav-menu a,
+.App.dark .nav-user,
+.App.dark .nav-user a {
+  color: #e8eefc;
+}
+
+/* ===== Кнопки ===== */
+.App.dark button,
+.App.dark .home-btn,
+.App.dark .filter-btn {
+  background: #18244a;
+  color: #cfe1ff;
+  border: 1px solid #2c3f7a;
+}
+
+.App.dark button:hover {
+  background: #203064;
+}
+
+/* ===== Акцентные кнопки ===== */
+.App.dark .home-btn.primary,
+.App.dark .filter-btn.active {
+  background: linear-gradient(135deg, #4da3ff, #38bdf8);
+  color: #ffffff;
+  border: none;
+}
+
+/* ===== Статусы ===== */
+.App.dark .status-btn {
+  background: #111a2e;
+  border: 1px solid #1e2a4a;
+  color: #cfe1ff;
+}
+
+.App.dark .status-btn.active {
+  background: linear-gradient(135deg, #4da3ff, #38bdf8);
+  color: #fff;
+}
+
+/* ===== Мелкий текст ===== */
+.App.dark .text-muted,
+.App.dark .muted {
+  color: #9aa7c7;
+}
+/* ================================
+   FIX TECHNOLOGY CARDS (DARK BLUE)
+================================ */
+
+/* Вся карточка */
+.App.dark .technology-card-wrapper {
+  background: linear-gradient(180deg, #111a2e, #0b1220);
+  border: 1px solid #1e2a4a;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+  padding: 16px;
+}
+
+/* УБИРАЕМ ЧЁРНЫЙ ВНУТРЕННИЙ БЛОК */
+.App.dark .technology-card-wrapper > div {
+  background: transparent !important;
+}
+
+/* Заголовок и описание */
+.App.dark .technology-card-wrapper h3,
+.App.dark .technology-card-wrapper h4,
+.App.dark .technology-card-wrapper .tech-title {
+  color: #ffffff;
+}
+
+.App.dark .technology-card-wrapper p {
+  color: #cfe1ff;
+}
+
+/* Бейджи FRONTEND / BACKEND */
+.App.dark .tech-category,
+.App.dark .technology-card-wrapper .badge {
+  background: linear-gradient(135deg, #4da3ff, #38bdf8);
+  color: #ffffff;
+  border: none;
+}
+
+/* ===== Кнопки внутри карточки ===== */
+.App.dark .technology-card-wrapper button,
+.App.dark .technology-card-wrapper .card-more-link {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+}
+
+.App.dark .technology-card-wrapper button:hover,
+.App.dark .technology-card-wrapper .card-more-link:hover {
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+}
+
+/* ===== Блок "Заметки" ===== */
+.App.dark .technology-card-wrapper .notes,
+.App.dark .technology-card-wrapper .notes-preview {
+  background-color: #0f1a2f;
+  border: 1px solid #1e2a4a;
+  color: #cfe1ff;
+  border-radius: 10px;
+}
+
+/* ===== Иконки статуса (✔ ⏳) ===== */
+.App.dark .technology-card-wrapper .status-icon {
+  color: #38bdf8;
+}
+/* =========================================
+   FORCE FIX BLACK INNER CARD (FINAL)
+========================================= */
+
+/* Вся карточка */
+.App.dark .technology-card-wrapper {
+  background: linear-gradient(180deg, #111a2e, #0b1220) !important;
+  border: 1px solid #1e2a4a !important;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+}
+
+/* 🔥 ПЕРЕБИВАЕМ ВСЕ ВЛОЖЕННЫЕ ЧЁРНЫЕ БЛОКИ */
+.App.dark .technology-card-wrapper *,
+.App.dark .technology-card-wrapper *::before,
+.App.dark .technology-card-wrapper *::after {
+  background-color: transparent !important;
+}
+
+/* Основной контент карточки */
+.App.dark .technology-card-wrapper .card-content,
+.App.dark .technology-card-wrapper .technology-card-content {
+  background: linear-gradient(180deg, #111a2e, #0b1220) !important;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/* Текст */
+.App.dark .technology-card-wrapper h3,
+.App.dark .technology-card-wrapper h4 {
+  color: #ffffff;
+}
+
+.App.dark .technology-card-wrapper p {
+  color: #cfe1ff;
+}
+
+/* ===== Кнопки ===== */
+.App.dark .technology-card-wrapper button,
+.App.dark .technology-card-wrapper .card-more-link {
+  background: linear-gradient(135deg, #2563eb, #38bdf8) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+/* ===== Notes ===== */
+.App.dark .technology-card-wrapper .notes,
+.App.dark .technology-card-wrapper .notes-preview {
+  background: #0f1a2f !important;
+  border: 1px solid #1e2a4a;
+  color: #cfe1ff;
+}
+/* =========================================
+   STATS PAGE – DARK BLUE THEME
+========================================= */
+
+/* Общий контейнер статистики */
+.App.dark .stats-page,
+.App.dark .progress-dashboard,
+.App.dark .stats-container {
+  background: linear-gradient(180deg, #0f1a2f, #0b1220);
+  color: #e8eefc;
+}
+
+/* Главная карточка статистики */
+.App.dark .progress-dashboard,
+.App.dark .stats-card,
+.App.dark .summary-section {
+  background: linear-gradient(180deg, #111a2e, #0b1220);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+}
+
+/* Заголовки */
+.App.dark .progress-dashboard h1,
+.App.dark .progress-dashboard h2,
+.App.dark .progress-dashboard h3 {
+  color: #ffffff;
+}
+
+/* Подписи */
+.App.dark .progress-dashboard p,
+.App.dark .progress-dashboard span {
+  color: #cfe1ff;
+}
+
+/* ===== Прогресс-бары ===== */
+.App.dark .progress-bar-background,
+.App.dark .MuiLinearProgress-root {
+  background-color: #1e2a4a !important;
+  border-radius: 999px;
+}
+
+.App.dark .progress-bar-fill,
+.App.dark .MuiLinearProgress-bar {
+  background: linear-gradient(135deg, #4da3ff, #38bdf8) !important;
+}
+
+/* Проценты справа */
+.App.dark .progress-percent {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* ===== Категории ===== */
+.App.dark .category-progress,
+.App.dark .category-card {
+  background: #0f1a2f;
+  border: 1px solid #1e2a4a;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+/* Маленькие счётчики (0/2, 0/1) */
+.App.dark .category-count {
+  background: #111a2e;
+  border: 1px solid #1e2a4a;
+  color: #cfe1ff;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+/* ===== Легенда ===== */
+.App.dark .summary-section {
+  background: linear-gradient(180deg, #111a2e, #0b1220);
+}
+
+.App.dark .summary-item {
+  color: #cfe1ff;
+}

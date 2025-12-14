@@ -1,131 +1,149 @@
-/* src/components/TechnologyNotes.css */
+/* ===============================
+   BASE (LIGHT THEME)
+================================ */
+
 .technology-notes {
-  margin-top: 12px;     /* карточка сверху, заметки явно ниже */
-  border-top: 1px solid #f1f3f5;
-  padding-top: 10px;
+  margin-top: 14px;
+  border-top: 1px solid #e9ecef;
+  padding-top: 12px;
 }
 
-  
-  .notes-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    background: #f8f9fa;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .notes-header:hover {
-    background: #e9ecef;
-  }
-  
-  .notes-toggle {
-    font-weight: 500;
-    color: #495057;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .notes-toggle::before {
-    content: '📝';
-  }
-  
-  .notes-counter {
-    font-size: 0.85rem;
-    color: #6c757d;
-    background: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    border: 1px solid #dee2e6;
-  }
-  
-  .notes-content {
-    margin-top: 10px;
-    animation: slideDown 0.3s ease;
-  }
-  
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .notes-textarea {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    resize: vertical;
-    transition: border-color 0.3s;
-    box-sizing: border-box;
-  }
-  
-  .notes-textarea:focus {
-    outline: none;
-    border-color: #45b7d1;
-    box-shadow: 0 0 0 3px rgba(69, 183, 209, 0.1);
-  }
-  
-  .notes-hint {
-    margin-top: 8px;
-    font-size: 0.85rem;
-    color: #6c757d;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .notes-saved {
-    color: #28a745;
-    font-weight: 500;
-  }
-  
-  .notes-empty {
-    color: #6c757d;
-  }
-  
-  .notes-hint small {
-    font-size: 0.8rem;
-    opacity: 0.7;
-  }
-  .App.dark .technology-card-inner {
-    background-color: #181818;
-    border-color: #333;
-  }
-  /* ТЁМНАЯ ТЕМА: панель "Заметки" */
-.App.dark .notes-panel {
-  background-color: #181818;
-  border-color: #333;
-  color: #f5f5f5;
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-/* кнопка "Нет заметок" */
-.App.dark .notes-panel .notes-empty-badge {
-  background-color: #222;
-  border-color: #444;
-  color: #f5f5f5;
-}
-/* Тёмная тема: плашка "Заметки" чёрная */
-
-.App.dark .technology-notes .notes-header {
-  background-color: #000 !important;
-  color: #f5f5f5 !important;
-  border-radius: 12px !important; /* оставь как у тебя */
-  border: 1px solid #333 !important;
+.notes-header:hover {
+  background: #e9ecef;
 }
 
-.App.dark .technology-notes .notes-counter {
-  background-color: #111 !important;
-  color: #f5f5f5 !important;
-  border-color: #333 !important;
+.notes-toggle {
+  font-weight: 500;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notes-toggle::before {
+  content: '📝';
+}
+
+.notes-counter {
+  font-size: 0.8rem;
+  color: #495057;
+  background: #ffffff;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #dee2e6;
+}
+
+.notes-content {
+  margin-top: 12px;
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notes-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: #45b7d1;
+  box-shadow: 0 0 0 3px rgba(69, 183, 209, 0.15);
+}
+
+.notes-hint {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #6c757d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notes-saved {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.notes-empty {
+  color: #6c757d;
+}
+
+/* ===============================
+   DARK BLUE THEME
+================================ */
+
+.App.dark .technology-notes {
+  border-top-color: #1e2a4a;
+}
+
+.App.dark .notes-header {
+  background: linear-gradient(180deg, #111a2e, #0b1220);
+  border: 1px solid #1e2a4a;
+  color: #e8eefc;
+}
+
+.App.dark .notes-header:hover {
+  background: #162447;
+}
+
+.App.dark .notes-toggle {
+  color: #e8eefc;
+}
+
+.App.dark .notes-counter {
+  background: #111a2e;
+  border-color: #1e2a4a;
+  color: #cfe1ff;
+}
+
+.App.dark .notes-content {
+  background: transparent;
+}
+
+.App.dark .notes-textarea {
+  background: #0f1a2f;
+  border: 1px solid #1e2a4a;
+  color: #e8eefc;
+}
+
+.App.dark .notes-textarea::placeholder {
+  color: #9aa7c7;
+}
+
+.App.dark .notes-hint {
+  color: #9aa7c7;
+}
+
+.App.dark .notes-saved {
+  color: #38bdf8;
+}
+
+.App.dark .notes-empty {
+  color: #9aa7c7;
 }

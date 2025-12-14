@@ -13,7 +13,7 @@ function TechnologyNotes({ techId, notes, onNotesChange }) {
 
   return (
     <div className="technology-notes">
-      <div 
+      <div
         className="notes-header"
         onClick={() => setIsExpanded(!isExpanded)}
       >
@@ -24,7 +24,7 @@ function TechnologyNotes({ techId, notes, onNotesChange }) {
           {notes.length > 0 ? `${notes.length} симв.` : 'Нет заметок'}
         </span>
       </div>
-      
+
       {isExpanded && (
         <div className="notes-content">
           <textarea
