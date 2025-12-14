@@ -1,43 +1,66 @@
-// src/components/QuickActions.jsx
-import React from 'react'
+
+import { Button, Stack, Snackbar, Alert } from '@mui/material'
+import { useState, useRef } from 'react'
 
 export default function QuickActions({
   technologies = [],
-  onMarkAllCompleted = () => {},
-  onResetAll = () => {},
-  onRandomSelect = () => {},
-  exportData = () => {},
-  importData = () => {}
+  onMarkAllCompleted,
+  onResetAll,
+  onRandomSelect,
+  exportData,
+  importData
 }) {
-  const total = technologies.length
-  const completed = technologies.filter(t => t.status === 'completed').length
+  const fileInputRef = useRef(null)
+  const [snack, setSnack] = useState({ open: false, msg: '', type: 'success' })
+
+  const showSnack = (msg, type = 'success') =>
+    setSnack({ open: true, msg, type })
+
+  const handleRandom = () => {
+    if (!technologies.length) {
+      showSnack('Нет технологий для выбора', 'warning')
+      return
+    }
+    onRandomSelect()
+  }
 
   return (
-    <div className="quick-actions" style={{width:'100%'}}>
-      {/* header is provided by panel wrapper */}
-      <div style={{marginBottom:12, fontWeight:800, color:'inherit'}}> {/* placeholder */}</div>
+    <>
+      <Stack spacing={1} className="quick-actions">
+        <Button className="btn btn-random" onClick={handleRandom}>
+          🎲 Случайная технология
+        </Button>
+        <Button className="btn btn-complete" onClick={onMarkAllCompleted}>
+          Отметить все как выполненные
+        </Button>
+        <Button className="btn btn-reset" onClick={onResetAll}>
+          Сбросить статусы
+        </Button>
+        <Button className="btn btn-export" onClick={exportData}>
+          Экспорт данных
+        </Button>
+        <Button className="btn btn-import" onClick={() => fileInputRef.current.click()}>
+          Импорт данных
+        </Button>
+      </Stack>
 
-      <button className="action action-accent" onClick={onMarkAllCompleted} type="button">
-        <span>✅ Отметить все как выполненные</span>
-        <small style={{opacity:0.9}}>{completed}/{total}</small>
-      </button>
+      <input
+        ref={fileInputRef}
+        type="file"
+        hidden
+        accept="application/json"
+        onChange={importData}
+      />
 
-      <button className="action action-danger" onClick={onResetAll} type="button">
-        <span>🔄 Сбросить все статусы</span>
-      </button>
-
-      <button className="action action-green" onClick={onRandomSelect} type="button">
-        <span>🎲 Случайный выбор</span>
-        <small style={{opacity:0.95}}>{total}</small>
-      </button>
-
-      <button className="action action-ghost" onClick={exportData} type="button">
-        <span>📤 Экспорт данных</span>
-      </button>
-
-      <button className="action action-orange" onClick={importData} type="button">
-        <span>📥 Импорт данных</span>
-      </button>
-    </div>
+      <Snackbar
+        open={snack.open}
+        autoHideDuration={3000}
+        onClose={() => setSnack({ ...snack, open: false })}
+      >
+        <Alert severity={snack.type} variant="filled">
+          {snack.msg}
+        </Alert>
+      </Snackbar>
+    </>
   )
 }

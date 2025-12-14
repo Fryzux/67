@@ -1,476 +1,150 @@
-/* ========== THEME + PANEL SYNC (REPLACE styles.css WITH THIS) ========== */
 
-/* Variables */
-:root{
-  --bg-dark-1: #031022;
-  --bg-dark-2: #06112a;
-  --card-dark: #071626;
-  --text-dark: #e7eef6;
-  --muted-dark: #9aa6b2;
-
-  --bg-light-1: #f6f8fb;
-  --card-light: #ffffff;
-  --text-light: #0b1b2a;
-  --muted-light: #5b6b78;
-
-  --accent-green-1: #0ea44a;
-  --accent-green-2: #10b981;
-
-  --accent-blue-1: #2ea0ff;
-  --accent-blue-2: #60a5fa;
-
-  --radius: 12px;
-  --shadow-sm: 0 6px 18px rgba(2,6,23,0.6);
+/* === Buttons base === */
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Theme classes set the variables used by components */
-body.theme-dark{
-  --bg: linear-gradient(180deg, var(--bg-dark-1), var(--bg-dark-2));
-  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  --card-solid: var(--card-dark);
-  --text: var(--text-dark);
-  --muted: var(--muted-dark);
-  --panel-border: rgba(255,255,255,0.03);
-  --panel-contrast: rgba(255,255,255,0.04);
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
 }
 
-body.theme-light{
-  --bg: var(--bg-light-1);
-  --card-bg: linear-gradient(180deg, #ffffff, #ffffff);
-  --card-solid: var(--card-light);
-  --text: var(--text-light);
-  --muted: var(--muted-light);
-  --panel-border: rgba(2,6,23,0.06);
-  --panel-contrast: rgba(0,0,0,0.04);
+/* === Filter buttons === */
+.filters button {
+  background: rgba(255,255,255,0.06);
+  color: #cbd5f5;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 6px 10px;
 }
 
-/* Accent */
-body.accent-green {
-  --accent-1: var(--accent-green-1);
-  --accent-2: var(--accent-green-2);
-  --accent: linear-gradient(90deg,var(--accent-1),var(--accent-2));
-}
-body.accent-blue {
-  --accent-1: var(--accent-blue-1);
-  --accent-2: var(--accent-blue-2);
-  --accent: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+.filters button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
 }
 
-/* Base reset */
-*{box-sizing:border-box}
-html,body,#root{height:100%}
-body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  background: var(--bg);
-  color: var(--text);
-  transition: background 220ms ease, color 220ms ease;
+/* === Quick actions === */
+.quick-actions .btn {
+  width: 100%;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
-/* Container */
-.container{ max-width:1200px; margin:28px auto; padding:20px; }
-
-/* NAV */
-.nav{
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; padding:12px 16px;
-  background: rgba(255,255,255,0.01);
-  border-radius: calc(var(--radius) - 4px);
-  box-shadow: var(--shadow-sm);
-  border:1px solid var(--panel-contrast);
+.btn-random { background: #3b82f6; color: white; }
+.btn-complete { background: #22c55e; color: #062e1c; }
+.btn-reset { background: #f59e0b; color: #3a2500; }
+.btn-export, .btn-import {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #60a5fa;
 }
-.brand{ display:flex; gap:12px; align-items:center; min-width:0 }
-.logo{
-  width:44px; height:44px; border-radius:10px;
-  display:grid; place-items:center;
-  background: var(--accent-1, #0ea44a);
-  color:#012029; font-weight:800;
-}
-.navlinks{ display:flex; gap:14px; align-items:center; flex-wrap:wrap }
-.navlinks a{ color:var(--text); text-decoration:none; padding:6px 10px; border-radius:8px; font-weight:600; opacity:0.95 }
-.navlinks a.active{ background: rgba(255,255,255,0.02); }
-
-/* Buttons */
-.btn{
-  display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px;
-  font-weight:700; border:0; cursor:pointer;
-  background: var(--accent);
-  color:#012029;
-  transition: transform 160ms ease, filter 160ms ease;
-}
-.btn.ghost{ background: transparent; border:1px solid var(--panel-contrast); color:var(--text) }
-.btn.small{ padding:6px 10px; font-size:0.9rem; border-radius:8px; }
-
-/* Accent button */
-.accent-btn{ display:inline-grid; gap:8px; padding:6px; border-radius:10px; background: rgba(255,255,255,0.02) }
-.accent-dot{ width:14px; height:14px; border-radius:50%; background: linear-gradient(135deg,var(--accent-2, #10b981),var(--accent-1, #0ea44a)); }
-
-/* Card surface (used by tech cards and panels) */
-.card{
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding:16px;
-  box-shadow: var(--shadow-sm);
-  border:1px solid var(--panel-contrast);
-  transition: background 200ms ease, border-color 200ms ease;
+.main-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  gap: 24px;
+  align-items: start;
 }
 
-/* MAIN GRID */
-.main-grid{ display:grid; grid-template-columns: 320px 1fr 320px; gap:20px; align-items:start }
-@media (max-width:1000px){ .main-grid{ grid-template-columns:1fr; } }
-
-/* Ensure panels use same dark/light card background */
-.filters-panel,
-.actions-panel,
-.panel.card,
-.quick-actions.card {
-  background: var(--card-bg) !important;
-  border:1px solid var(--panel-contrast) !important;
-  box-shadow: var(--shadow-sm);
-  color: var(--text);
-  padding:18px;
-  border-radius:12px;
-}
-
-/* Remove any inner white cards that were previously used */
-.panel .inner-card,
-.filters-panel .inner-card,
-.actions-panel .inner-card,
-.quick-actions .inner-card {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  color: inherit !important;
-}
-
-/* Filters header */
-.filters-panel h3,
-.actions-panel h3,
-.panel.card h3 {
-  color: var(--text);
-  font-weight: 800;
-  margin-bottom: 14px;
-  opacity:0.95;
-}
-
-/* Filter buttons on dark/light panel: subtle neutral surface */
-.filter-btn {
-  display:flex; align-items:center; gap:10px;
-  width:100%;
-  padding:10px 12px;
-  border-radius:10px;
-  background: rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.04);
-  color: var(--text);
-  font-weight:700;
-  cursor:pointer;
-}
-.filter-btn + .filter-btn{ margin-top:12px; }
-
-.filter-btn:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* Active filter uses accent (but in light theme text should be dark) */
-.filter-btn.active {
-  background: var(--accent);
-  color: #012029;
-  border: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
-}
-
-/* Search box styling to match panel background */
-.search{
-  display:flex; align-items:center; gap:8px;
-  padding:10px 12px; border-radius:10px;
-  background: rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.03);
-}
-.search input{ border:0; background:transparent; color:var(--text); width:100%; padding:6px 8px }
-
-/* Quick actions: make tile buttons vibrant, but panel background matches theme */
-.quick-actions .action {
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; padding:12px 14px; border-radius:10px; font-weight:700;
-  margin-bottom:12px; border:0; cursor:pointer;
-  color:#012029;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-}
-
-/* action color variants (these remain vivid on both themes) */
-.quick-actions .action-accent{ background: linear-gradient(90deg, var(--accent-2, #10b981), var(--accent-1, #0ea44a)); }
-.quick-actions .action-danger{ background: linear-gradient(90deg, #ff9aa2, #ff6b6b); }
-.quick-actions .action-green{ background: linear-gradient(90deg, #8de08d, #60c38a); }
-.quick-actions .action-ghost{ background: linear-gradient(90deg, #d6b3ff, #f0a6ff); color:#012029; }
-.quick-actions .action-orange{ background: linear-gradient(90deg, #ffb34d, #ff8a00); }
-
-/* Make sure small text like badges/muted follow theme */
-.badge{ display:inline-block; padding:6px 8px; border-radius:999px; background: rgba(255,255,255,0.03); color:var(--text); font-weight:700; font-size:0.82rem }
-.muted{ color: var(--muted); }
-
-/* Notes toggle button style - uses accent so it's visible on both themes */
-.note-toggle,
-.note-btn {
-  display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:10px;
-  background: var(--accent); color:#012029; font-weight:800; border:0; cursor:pointer;
-}
-
-/* Small helper */
-.row{ display:flex; gap:12px; align-items:center }
-
-/* Sticky aside on desktop */
-@media (min-width:1001px){
-  aside > .card { position: sticky; top:96px; }
-}
-
-/* small transitions */
-*{ transition: background 160ms linear, color 160ms linear !important; }
-/* =========================================================
-   ПОЛНОЕ ВЫРАВНИВАНИЕ ФОНОВ ФИЛЬТРОВ / КВИК АКЩНС / ТЕХНОЛОГИЙ
-   ========================================================= */
-
-/* Убираем ВСЕ белые внутренние карточки */
-.inner-card,
-.panel .inner-card,
-.filters-panel .inner-card,
-.actions-panel .inner-card,
-.quick-actions .inner-card {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Панели фильтров — одинаковый фон с карточками технологий */
-.filters-panel,
-.panel.card {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--panel-border) !important;
-  box-shadow: var(--shadow-sm);
-  padding: 20px;
-  border-radius: 14px;
-}
-
-/* Панель быстрых действий — тоже тёмная/светлая как тема */
-.actions-panel,
-.quick-actions.card {
-  background: var(--card-bg) !important;
-  border: 1px solid var(--panel-border) !important;
-  box-shadow: var(--shadow-sm);
-  padding: 20px;
-  border-radius: 14px;
-}
-
-/* Фильтр-кнопки */
-.filter-btn {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.05);
-  color: var(--text);
-  border-radius: 10px;
-  padding: 10px 12px;
-}
-.filter-btn + .filter-btn {
-  margin-top: 12px;
-}
-
-/* Активный фильтр */
-.filter-btn.active {
-  background: var(--accent) !important;
-  color: #012029 !important;
-  border: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-/* Поиск */
-.panel.card .search {
-  background: rgba(255,255,255,0.05);
+.panel {
+  background: linear-gradient(180deg, #0f1a2f, #0b1220);
+  border-radius: 12px;
+  padding: 16px;
   border: 1px solid rgba(255,255,255,0.08);
 }
-.panel.card .search input {
-  color: var(--text);
+/* ===== Global theme ===== */
+:root {
+  --bg-dark: #0b1220;
+  --bg-card: #111a2e;
+  --accent: #4da3ff;
+  --accent-soft: rgba(77,163,255,0.15);
+  --text-main: #e8eefc;
+  --text-muted: #9aa7c7;
+  --danger: #ff5c5c;
 }
 
-/* =========================================================
-   ОТСТУПЫ МЕЖДУ КАРТОЧКАМИ ТЕХНОЛОГИЙ
-   ========================================================= */
-.tech-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px !important; /* БОЛЬШЕ РАССТОЯНИЕ */
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #101a33, #070b14);
+  color: var(--text-main);
+  font-family: Inter, system-ui, Arial, sans-serif;
 }
 
-.tech-list .card {
-  margin-bottom: 0 !important;
-  padding: 18px !important;
-  border-radius: 16px !important;
-}
-/* ===========================
-  FIX: СДЕЛАТЬ ПАНЕЛИ ТЁМНЫМИ/СВЕТЛЫМИ И УБРАТЬ БЕЛЫЕ inner-card
-  + ЗАВЕРШИТЬ ВИДИМОСТЬ ТЕКСТА
-   (вставь в конец styles.css)
-   =========================== */
-
-/* 1) Полностью убрать любые белые inner-card - сильный !important */
-.inner-card,
-.panel .inner-card,
-.filters-panel .inner-card,
-.actions-panel .inner-card,
-.quick-actions .inner-card {
-  background: transparent !important;
-  color: inherit !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+/* ===== Layout ===== */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  gap: 24px;
 }
 
-/* 2) Панели (лево/право и общие) — должны использовать переменные темы */
-.filters-panel,
-.actions-panel,
-.panel.card,
-.quick-actions.card {
-  background: var(--card-bg) !important;      /* фон панели согласно теме */
-  color: var(--text) !important;              /* текст панели */
-  border: 1px solid var(--panel-border) !important;
-  box-shadow: var(--shadow-sm) !important;
-  padding: 20px !important;
-  border-radius: 14px !important;
+/* ===== Cards ===== */
+.card {
+  background: linear-gradient(180deg, #141f38, #0c1324);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* 3) Если внутри inner-card есть заголовки — делаем их читаемыми */
-.filters-panel .inner-card h3,
-.filters-panel h3,
-.panel.card h3,
-.actions-panel h3,
-.quick-actions h3 {
-  color: var(--text) !important;
-  opacity: 0.95 !important;
-  font-weight: 800;
-  margin: 0 0 12px 0;
-}
-
-/* 4) Кнопки фильтров — видимы на обоих фонах (тёмном и светлом) */
+/* ===== Filters ===== */
 .filter-btn {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  width:100%;
-  padding:10px 12px;
-  border-radius:10px;
-  background: rgba(255,255,255,0.03) !important; /* subtle surface */
-  border: 1px solid rgba(255,255,255,0.04) !important;
-  color: var(--text) !important;
-  font-weight:700;
-  cursor:pointer;
-  text-align:left;
-}
-.filter-btn + .filter-btn { margin-top:12px !important; }
-
-.filter-btn .icon { opacity:0.95 }
-
-/* active state: uses accent gradient; ensure text is dark there */
-.filter-btn.active {
-  background: linear-gradient(90deg, var(--accent-2, #10b981), var(--accent-1, #0ea44a)) !important;
-  color: #012029 !important;
-  border: none !important;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25) !important;
-}
-
-/* 5) Поиск внутри панели — фон и текст корректные */
-.panel.card .search {
-  background: rgba(255,255,255,0.02) !important;
-  border: 1px solid rgba(255,255,255,0.03) !important;
-}
-.panel.card .search input {
-  color: var(--text) !important;
-}
-
-/* 6) Заголовок «Фильтры» внутри inner-card (если он есть) — убрать бледность */
-.filters-panel .inner-card .panel-title,
-.filters-panel .panel-title,
-.panel.card .panel-title {
-  color: var(--text) !important;
-  opacity: 0.95 !important;
-  font-weight: 800 !important;
-}
-
-/* 7) Быстрые действия — плитки остаются яркими, но панель фон совпадает */
-.quick-actions.card .action { color:#012029 !important; box-shadow: 0 6px 14px rgba(0,0,0,0.18) !important; }
-
-/* 8) Принудительно восстановим видимость текста внутри любых вложенных элементов */
-.filters-panel * { color: inherit !important; }
-.actions-panel * { color: inherit !important; }
-.panel.card * { color: inherit !important; }
-
-/* 9) Увеличим контраст тёмных шрифтов при светлой теме:
-   (если body.theme-light, то внутри панели делаем текст dark) */
-body.theme-light .filters-panel,
-body.theme-light .actions-panel,
-body.theme-light .panel.card {
-  color: var(--text) !important; /* у light-темы var(--text) темный */
-}
-body.theme-light .filter-btn {
-  background: rgba(0,0,0,0.03) !important;
-  border: 1px solid rgba(0,0,0,0.06) !important;
-  color: var(--text) !important;
-}
-body.theme-light .filter-btn.active {
-  color: #012029 !important;
-}
-
-/* 10) Небольшая корректировка размеров и паддингов (чтобы совпадало с карточками) */
-.filters-panel .panel,
-.actions-panel .panel {
-  padding: 0 !important;
-}
-.filters-panel .panel > * { margin: 0 !important; }
-/* ====== PATCH: remove inner white cards + ensure text visible in panels ====== */
-
-/* Remove any white inner-card wrappers inside panels */
-.inner-card,
-.panel .inner-card,
-.filters-panel .inner-card,
-.actions-panel .inner-card,
-.quick-actions .inner-card {
-  display: none !important; /* completely hide any leftover inner-card */
-}
-
-/* Ensure panels match theme card background and text color */
-.filters-panel,
-.actions-panel,
-.panel.card,
-.quick-actions.card {
-  background: var(--card-bg) !important;
-  color: var(--text) !important;
-  border: 1px solid var(--panel-border) !important;
-  box-shadow: var(--shadow-sm) !important;
-}
-
-/* Make sure all nested elements inherit readable color */
-.filters-panel * { color: inherit !important; }
-.actions-panel * { color: inherit !important; }
-.panel.card * { color: inherit !important; }
-
-/* Buttons inside panels — ensure visible contrast on both themes */
-.filter-btn {
-  background: rgba(255,255,255,0.03) !important;
-  border: 1px solid rgba(255,255,255,0.04) !important;
-  color: var(--text) !important;
+  background: var(--accent-soft);
+  color: var(--text-main);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
 }
 .filter-btn.active {
-  background: linear-gradient(90deg, var(--accent-2, #10b981), var(--accent-1, #0ea44a)) !important;
-  color: #012029 !important;
+  background: var(--accent);
 }
 
-/* Quick actions tiles visibility */
-.quick-actions .action { color: #012029 !important; }
+/* ===== Technology card ===== */
+.tech-card {
+  margin-bottom: 16px;
+}
+.tech-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.tech-desc {
+  color: var(--text-muted);
+  font-size: 14px;
+}
 
-/* If any heading inside previously used inner-card is faded, make it full visible */
-.filters-panel h3,
-.actions-panel h3,
-.panel.card h3 { color: var(--text) !important; opacity: 0.95 !important; }
+/* ===== Buttons ===== */
+.btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ===== Quick actions ===== */
+.quick-btn {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #18244a;
+  color: #cfe1ff;
+  border: 1px solid #2c3f7a;
+}
+.quick-btn:hover {
+  background: #203064;
+}

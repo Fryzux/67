@@ -1,79 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import './styles.css'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Home from './pages/Home'
-import TechnologyList from './pages/TechnologyList'
-import TechnologyDetail from './pages/TechnologyDetail'
-import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
+import React, { useState, useMemo, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { ThemeProvider, CssBaseline } from '@mui/material'
+import { lightTheme, darkTheme } from './theme/muiTheme'
 import Navigation from './components/Navigation'
-import ProtectedRoute from './components/ProtectedRoute'
+import TechnologyList from './pages/TechnologyList'
 import Stats from './pages/Stats'
-import Settings from './pages/Settings'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return localStorage.getItem('isLoggedIn') === 'true'
-  })
+  const [mode, setMode] = useState(localStorage.getItem('mui-theme') || 'dark')
 
-  const [username, setUsername] = useState(() => {
-    return localStorage.getItem('username') || ''
-  })
+  const theme = useMemo(
+    () => (mode === 'dark' ? darkTheme : lightTheme),
+    [mode]
+  )
 
   useEffect(() => {
-    const loggedIn = localStorage.getItem('isLoggedIn') === 'true'
-    const user = localStorage.getItem('username') || ''
-    setIsLoggedIn(loggedIn)
-    setUsername(user)
-  }, [])
+    document.body.classList.toggle('light', mode === 'light')
+  }, [mode])
 
-  const handleLogin = (user) => {
-    localStorage.setItem('isLoggedIn', 'true')
-    localStorage.setItem('username', user)
-    setIsLoggedIn(true)
-    setUsername(user)
-  }
-
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn')
-    localStorage.removeItem('username')
-    setIsLoggedIn(false)
-    setUsername('')
+  const toggleTheme = () => {
+    const next = mode === 'dark' ? 'light' : 'dark'
+    setMode(next)
+    localStorage.setItem('mui-theme', next)
   }
 
   return (
-    <div className="App">
-      <Navigation
-        isLoggedIn={isLoggedIn}
-        username={username}
-        onLogout={handleLogout}
-      />
-
-      <main className="container layout" style={{paddingTop: 20}}>
-        <Routes>
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/stats" element={<Stats />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/Technology-tracker/" element={<Home />} />
-
-          <Route path="/technologies" element={<TechnologyList />} />
-          <Route path="/technology/:id" element={<TechnologyDetail />} />
-
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </main>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Navigation dark={mode === 'dark'} toggleTheme={toggleTheme} />
+      <Routes>
+        <Route path="/" element={<TechnologyList />} />
+        <Route path="/technologies" element={<TechnologyList />} />
+        <Route path="/dashboard" element={<TechnologyList />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/settings" element={<div className="page">Настройки</div>} />
+      </Routes>
+    </ThemeProvider>
   )
 }
 
