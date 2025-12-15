@@ -1088,3 +1088,32 @@
 .App.dark .summary-item {
   color: #cfe1ff;
 }
+/* =========================================
+   FIX /technologies DARK BACKGROUND
+========================================= */
+
+/* Страница technologies целиком */
+.App.dark .technology-list,
+.App.dark .technologies-page,
+.App.dark .page,
+.App.dark .container,
+.App.dark .main-grid {
+  background: transparent !important;
+}
+
+/* Гарантируем фон от App */
+.App.dark {
+  background: radial-gradient(circle at top, #101a33, #070b14);
+}
+
+/* Если есть внутренний wrapper */
+.App.dark .technology-list-wrapper,
+.App.dark .technologies-wrapper {
+  background: transparent !important;
+}
+
+/* Убираем белые полосы по бокам */
+.App.dark body,
+.App.dark html {
+  background: radial-gradient(circle at top, #101a33, #070b14);
+}
