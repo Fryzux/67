@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
+  "homepage": "https://fryzux.github.io/67",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +13,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
+
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -19,6 +23,7 @@
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.10.1"
   },
+
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.5",
