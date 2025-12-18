@@ -1117,3 +1117,440 @@
 .App.dark html {
   background: radial-gradient(circle at top, #101a33, #070b14);
 }
+/* ===============================
+   DISCORD BASE COLORS
+================================ */
+
+.App {
+  background: #f2f3f5;
+  color: #2e3338;
+}
+
+.App.dark {
+  background: #313338;
+  color: #dbdee1;
+}
+/* ===============================
+   DISCORD BUTTONS + GLOW
+================================ */
+
+.App button,
+.App .home-btn,
+.App .filter-btn,
+.App .action-btn,
+.App .status-btn {
+  background: #5865f2;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px; /* Discord style */
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+/* hover */
+.App button:hover,
+.App .home-btn:hover,
+.App .filter-btn:hover,
+.App .action-btn:hover {
+  background: #4752c4;
+  transform: translateY(-1px);
+}
+
+/* glow */
+.App button::after,
+.App .home-btn::after,
+.App .filter-btn::after,
+.App .action-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 18px rgba(88, 101, 242, 0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.App button:hover::after,
+.App .home-btn:hover::after,
+.App .filter-btn:hover::after,
+.App .action-btn:hover::after {
+  opacity: 1;
+}
+/* ===============================
+   THEME TOGGLE WITH ICON 🌙 / ☀
+   Discord style – CSS only
+================================ */
+
+/* сама кнопка */
+.App .theme-toggle,
+.App .theme-toggle-btn,
+.App .theme-button,
+.App .main-navigation button {
+  position: relative;
+  padding: 6px 16px 6px 36px; /* место под иконку */
+  border-radius: 999px;
+  background: #1e1f22;
+  color: #dbdee1;
+  border: 1px solid #3f4147;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* hover */
+.App .theme-toggle:hover,
+.App .theme-toggle-btn:hover,
+.App .theme-button:hover,
+.App .main-navigation button:hover {
+  background: #2b2d31;
+}
+
+/* 🌙 / ☀ иконка */
+.App .theme-toggle::before,
+.App .theme-toggle-btn::before,
+.App .theme-button::before,
+.App .main-navigation button::before {
+  content: "☀";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+}
+
+/* DARK → 🌙 */
+.App.dark .theme-toggle::before,
+.App.dark .theme-toggle-btn::before,
+.App.dark .theme-button::before,
+.App.dark .main-navigation button::before {
+  content: "🌙";
+}
+/* ===============================
+   DISCORD BACKGROUND (FINAL FIX)
+================================ */
+
+/* Убираем боковые полосы */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #1e1f22;
+}
+
+/* Всё приложение */
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background: #f2f3f5; /* светлая тема */
+}
+
+/* ТЁМНАЯ ТЕМА — фон как Discord */
+.App.dark {
+  background: linear-gradient(
+    180deg,
+    #1e1f22 0%,
+    #2b2d31 100%
+  );
+}
+
+/* Контент поверх фона */
+.App .page,
+.App .container,
+.App .main-grid {
+  background: transparent;
+}
+
+/* Панели и карточки */
+.App.dark .panel,
+.App.dark .search-bar,
+.App.dark .filter-buttons,
+.App.dark .quick-actions,
+.App.dark .technology-card-wrapper {
+  background: #2b2d31;
+  border: 1px solid #3f4147;
+}
+/* =======================================
+   DISCORD LAYOUT FIX (LIGHT + DARK)
+======================================= */
+
+/* 1. ВЕСЬ ЭКРАН — ЕДИНЫЙ ФОН */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #f2f3f5; /* светлая */
+}
+
+/* 2. КОРЕНЬ ПРИЛОЖЕНИЯ */
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background: #f2f3f5; /* светлая тема */
+}
+
+/* 3. ТЁМНАЯ ТЕМА — КАК DISCORD */
+.App.dark,
+.App.dark body {
+  background: radial-gradient(
+    circle at top,
+    #1e1f22 0%,
+    #2b2d31 60%,
+    #1e1f22 100%
+  );
+}
+
+/* 4. УБИРАЕМ "СЕРЫЙ ОСТРОВ" В ЦЕНТРЕ */
+.App .page,
+.App .container,
+.App .main-grid,
+.App .technology-list,
+.App .stats-page {
+  background: transparent !important;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 5. КАРТОЧКИ И ПАНЕЛИ — ОТДЕЛЬНО */
+.App.dark .panel,
+.App.dark .filter-buttons,
+.App.dark .quick-actions,
+.App.dark .search-bar,
+.App.dark .technology-card-wrapper,
+.App.dark .progress-dashboard {
+  background: #2b2d31;
+  border: 1px solid #3f4147;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+/* 6. СВЕТЛАЯ ТЕМА — ТОЖЕ БЕЗ ПОЛОС */
+.App:not(.dark) .page,
+.App:not(.dark) .container {
+  background: transparent;
+}
+/* =======================================
+   REMOVE WHITE SIDES (FINAL FIX)
+======================================= */
+
+/* Фон всегда тёмный */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* Корень приложения */
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(
+    circle at top,
+    #1e1f22 0%,
+    #2b2d31 60%,
+    #1e1f22 100%
+  );
+}
+
+/* 🔥 УБИРАЕМ ОГРАНИЧЕНИЕ ШИРИНЫ */
+.App > * {
+  max-width: none !important;
+}
+
+/* Основной контент — центрируем БЕЗ белого фона */
+.App .page,
+.App .container,
+.App .main-grid,
+.App .technology-list,
+.App .stats-page {
+  background: transparent !important;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Панели и карточки */
+.App.dark .panel,
+.App.dark .filter-buttons,
+.App.dark .quick-actions,
+.App.dark .search-bar,
+.App.dark .technology-card-wrapper,
+.App.dark .progress-dashboard {
+  background: #2b2d31;
+  border: 1px solid #3f4147;
+}
+/* =======================================
+   FINAL THEME BACKGROUND FIX
+======================================= */
+
+/* СВЕТЛАЯ ТЕМА */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #f2f3f5;
+}
+
+/* ROOT */
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background: #f2f3f5;
+}
+
+/* ТЁМНАЯ ТЕМА — ТОЛЬКО КОГДА .App.dark */
+.App.dark {
+  background: radial-gradient(
+    circle at top,
+    #1e1f22 0%,
+    #2b2d31 60%,
+    #1e1f22 100%
+  );
+}
+
+/* Убираем фон у внутренних контейнеров */
+.App .page,
+.App .container,
+.App .main-grid,
+.App .technology-list,
+.App .stats-page {
+  background: transparent !important;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Карточки — отдельно */
+.App.dark .panel,
+.App.dark .filter-buttons,
+.App.dark .quick-actions,
+.App.dark .search-bar,
+.App.dark .technology-card-wrapper,
+.App.dark .progress-dashboard {
+  background: #2b2d31;
+  border: 1px solid #3f4147;
+}
+
+/* СВЕТЛАЯ ТЕМА — карточки остаются белыми */
+.App:not(.dark) .panel,
+.App:not(.dark) .filter-buttons,
+.App:not(.dark) .quick-actions,
+.App:not(.dark) .search-bar,
+.App:not(.dark) .technology-card-wrapper,
+.App:not(.dark) .progress-dashboard {
+  background: #ffffff;
+}
+/* =======================================
+   REAL FINAL FIX — BODY FOLLOWS APP THEME
+======================================= */
+
+/* по умолчанию (светлая тема) */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #f2f3f5;
+}
+
+
+/* App всегда прозрачный относительно body */
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background: transparent;
+}
+
+/* центрируем контент */
+.App .page,
+.App .container,
+.App .main-grid,
+.App .technology-list,
+.App .stats-page {
+  background: transparent !important;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* карточки */
+.App.dark .panel,
+.App.dark .filter-buttons,
+.App.dark .quick-actions,
+.App.dark .search-bar,
+.App.dark .technology-card-wrapper,
+.App.dark .progress-dashboard {
+  background: #2b2d31;
+  border: 1px solid #3f4147;
+}
+/* =======================================
+   REAL FINAL FIX — NO WHITE SIDES EVER
+======================================= */
+
+/* BODY ВСЕГДА = ФОН ПРИЛОЖЕНИЯ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #f2f3f5; /* светлая тема */
+}
+
+/* ТЁМНАЯ ТЕМА — body тоже тёмный */
+.App.dark {
+  background: transparent;
+}
+
+.App.dark ~ * {
+  background: transparent;
+}
+
+/* когда App.dark есть — красим body */
+body:has(.App.dark) {
+  background: radial-gradient(
+    circle at top,
+    #1e1f22 0%,
+    #2b2d31 60%,
+    #1e1f22 100%
+  );
+}
+
+/* App ничего не перекрашивает */
+.App {
+  min-height: 100vh;
+  width: 100%;
+  background: transparent;
+}
+
+/* ВСЕ прямые div внутри App — прозрачные */
+.App > div {
+  background: transparent !important;
+}
+
+/* Центровка контента */
+.App .technology-list,
+.App header,
+.App .app-header,
+.App .quick-actions,
+.App .filter-buttons,
+.App .search-bar {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Карточки */
+.App.dark .technology-card-wrapper,
+.App.dark .panel,
+.App.dark .quick-actions,
+.App.dark .filter-buttons,
+.App.dark .search-bar {
+  background: #2b2d31;
+  border: 1px solid #3f4147;
+}
+
